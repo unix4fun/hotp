@@ -53,13 +53,13 @@ func (h *Hotp) hmacCounter(c uint64) (out []byte, err error) {
 	return
 }
 
-// XXX invalid if SHA256 or SHA512
+// XXX should work if SHA256 or SHA512
 func (h *Hotp) dt(hash []byte) uint32 {
 	/* handle error
 	if len(hash) < 20 {
 	}
 	*/
-	offset := hash[19] & 0x0f
+	offset := hash[len(hash)-1] & 0x0f
 	dbc1 := hash[offset : offset+4]
 	dbc1[0] = dbc1[0] & 0x7f
 	dbc2 := binary.BigEndian.Uint32(dbc1)
