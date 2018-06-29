@@ -44,7 +44,7 @@ func NewHotp(f func() hash.Hash, s []byte, d int) *Hotp {
 // internal it returns the hash
 func (h *Hotp) hmacCounter(c uint64) (out []byte, err error) {
 	buf := make([]byte, counterSize)
-	binary.LittleEndian.PutUint64(buf, c)
+	binary.BigEndian.PutUint64(buf, c)
 	n, err := h.hm.Write(buf)
 	if err != nil || n != counterSize {
 		return
