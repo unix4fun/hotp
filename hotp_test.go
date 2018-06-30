@@ -70,17 +70,5 @@ func TestVectorHotp(t *testing.T) {
 		if uint32(value) != out {
 			t.Fatalf("[vector: %d] -> expected: %d vs %d", key, value, out)
 		}
-
-		/*
-				out, err := h.hmacCounter(uint64(key))
-				if err != nil {
-					t.Fatalf("[vector: %d] HMAC error: %v", key, err)
-				}
-
-			outString := hex.EncodeToString(out)
-			if value != outString {
-				t.Fatalf("[vector: %d] -> expected: %s vs %s", key, value, outString)
-			}
-		*/
 	}
 }
