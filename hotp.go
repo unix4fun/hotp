@@ -23,7 +23,7 @@ type Hotp struct {
 	hm     hash.Hash
 }
 
-func NewHotp(f func() hash.Hash, s []byte, d int) *Hotp {
+func New(f func() hash.Hash, s []byte, d int) *Hotp {
 	digit := DefaultDigit
 
 	// 6, 7 or 8 digits!!

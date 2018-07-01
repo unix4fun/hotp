@@ -41,7 +41,7 @@ var (
 func TestVectorHmacCounter(t *testing.T) {
 
 	for key, value := range hmacRFCTestVector {
-		h := NewHotp(sha1.New, []byte(rfc4226Secret), 6)
+		h := New(sha1.New, []byte(rfc4226Secret), 6)
 		out, err := h.hmacCounter(uint64(key))
 		if err != nil {
 			t.Fatalf("[vector: %d] HMAC error: %v", key, err)
@@ -59,7 +59,7 @@ func TestVectorHmacCounter(t *testing.T) {
 
 func TestVectorHotp(t *testing.T) {
 	for key, value := range hotpRfcTestVector {
-		h := NewHotp(sha1.New, []byte(rfc4226Secret), 6)
+		h := New(sha1.New, []byte(rfc4226Secret), 6)
 
 		out, err := h.Get(uint64(key))
 		if err != nil {
