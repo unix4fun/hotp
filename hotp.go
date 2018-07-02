@@ -9,8 +9,9 @@ import (
 )
 
 const (
-	counterSize  = 8 // uint64
-	DefaultDigit = 6 // the number of HOTP digit
+	counterSize  = 8       // uint64
+	DefaultDigit = 6       // the number of HOTP digit
+	Version      = "0.1.0" // out first version
 )
 
 var (
@@ -53,9 +54,9 @@ func (h *Hotp) hmacCounter(c uint64) (out []byte, err error) {
 	return
 }
 
-// XXX should work if SHA256 or SHA512
+// should work if SHA256 or SHA512
 func (h *Hotp) dt(hash []byte) uint32 {
-	/* handle error
+	/* TODO handle error
 	if len(hash) < 20 {
 	}
 	*/
